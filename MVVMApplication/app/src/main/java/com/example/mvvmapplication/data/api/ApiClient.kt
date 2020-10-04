@@ -12,24 +12,24 @@ object ApiClient {
 
     private const val BASE_URL = "https://api.themoviedb.org/3/"
 
-    fun getApi(): PostApi {
+    fun getApi(okHttpClient: OkHttpClient): PostApi {
         val retrofit = Retrofit.Builder()
             .baseUrl(BASE_URL)
             .addConverterFactory(GsonConverterFactory.create())
-            .client(getOkHttpClient())
+            .client(okHttpClient)
             .build()
             return retrofit.create(PostApi::class.java)
     }
 
-    private fun getOkHttpClient(): OkHttpClient {
+    fun getOkHttpClient(loggingInterceptor: HttpLoggingInterceptor): OkHttpClient {
         val okHttpClient = OkHttpClient.Builder()
             .connectTimeout(60, TimeUnit.SECONDS)
             .readTimeout(60, TimeUnit.SECONDS)
-            .addInterceptor(getLogginInterceptor())
+            .addInterceptor(loggingInterceptor)
             return okHttpClient.build()
     }
 
-    private fun getLogginInterceptor() : HttpLoggingInterceptor {
+    fun getLoggingInterceptor() : HttpLoggingInterceptor {
         return HttpLoggingInterceptor(logger = object : HttpLoggingInterceptor.Logger {
             override fun log(message: String) {
                 Log.d("OkHttp", message)

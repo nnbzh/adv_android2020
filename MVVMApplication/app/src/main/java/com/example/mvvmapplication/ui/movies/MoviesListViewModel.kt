@@ -1,6 +1,5 @@
 package com.example.mvvmapplication.ui.movies
 
-import android.content.Context
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -8,13 +7,14 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.mvvmapplication.data.API_KEY
 import com.example.mvvmapplication.data.api.ApiClient
+import com.example.mvvmapplication.data.api.PostApi
 import com.example.mvvmapplication.data.model.Movie
 import com.example.mvvmapplication.ui.common.State
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
-class MoviesListViewModel(context: Context): ViewModel() {
+class MoviesListViewModel(val postApi: PostApi) : ViewModel() {
 
     private val logTag = "MoviesListViewModel"
 
@@ -29,7 +29,7 @@ class MoviesListViewModel(context: Context): ViewModel() {
         viewModelScope.launch {
             runCatching {
              withContext(Dispatchers.IO) {
-                    ApiClient.getApi().getMoviesList(API_KEY)
+                    postApi.getMoviesList(API_KEY)
                 }
             }.onSuccess {
                 _state.value = State.HideLoading
