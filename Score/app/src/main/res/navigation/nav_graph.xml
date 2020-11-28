@@ -7,16 +7,20 @@
 
     <fragment
         android:id="@+id/teamsListFragment"
-        android:name="com.example.score.ui.TeamsListFragment"
+        android:name="com.example.score.ui.views.TeamsListFragment"
         android:label="fragment_teams_list"
         tools:layout="@layout/fragment_teams_list" >
         <action
             android:id="@+id/action_teamsListFragment_to_teamDetailsFragment"
             app:destination="@id/teamDetailsFragment" />
+        <argument
+            android:name="team"
+            app:argType="com.example.score.data.models.Team" />
     </fragment>
+
     <fragment
         android:id="@+id/teamDetailsFragment"
-        android:name="com.example.score.ui.TeamDetailsFragment"
+        android:name="com.example.score.ui.views.TeamDetailsFragment"
         android:label="fragment_team_details"
         tools:layout="@layout/fragment_team_details" />
 </navigation>

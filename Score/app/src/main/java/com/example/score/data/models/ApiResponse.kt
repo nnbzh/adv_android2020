@@ -1,4 +1,7 @@
 package com.example.score.data.models
 
-class ApiResponse {
-}
+import com.google.gson.annotations.SerializedName
+
+data class ApiResponse(
+    @SerializedName("api") val api: ApiItem
+)

@@ -1,21 +1,21 @@
 package com.example.score.repository
 
 import com.example.score.data.api.ApiService
+import com.example.score.data.models.ApiResponse
 import com.example.score.data.models.Team
-import com.example.score.data.models.TeamResponse
 import com.example.score.utils.ApiStatus
 import com.example.score.utils.RequestHandler
 import java.lang.Exception
 
-class TeamRepositoryImpl(private val apiService: ApiService): TeamsRepository {
+class TeamsRepositoryImpl(private val apiService: ApiService): TeamsRepository {
 
-    override suspend fun getAllTeams(): ApiStatus<TeamResponse> {
+    override suspend fun getAllTeams(): ApiStatus<ApiResponse> {
         return try {
             val response = apiService.getAllTeams()
             if (response.isSuccessful) {
-                    RequestHandler.handleSucces(response)
+                    RequestHandler.handleSuccess(response)
             } else {
-                RequestHandler.handleSucces(response)
+                RequestHandler.handleSuccess(response)
             }
         } catch (e:Exception) {
             return ApiStatus.Error(e)
