@@ -2,15 +2,11 @@ package com.example.score.ui
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.score.data.api.ApiService
 import com.example.score.data.models.Team
 import com.example.score.repository.TeamsRepository
 import com.example.score.utils.ApiStatus
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 
 class TeamsListViewModel(private val teamsRepository: TeamsRepository): BaseViewModel() {
 

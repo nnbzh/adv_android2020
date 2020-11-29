@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/teamsListFragment">
+    app:startDestination="@id/standingsFragment">
 
     <fragment
         android:id="@+id/teamsListFragment"
@@ -23,4 +23,9 @@
         android:name="com.example.score.ui.views.TeamDetailsFragment"
         android:label="fragment_team_details"
         tools:layout="@layout/fragment_team_details" />
+    <fragment
+        android:id="@+id/standingsFragment"
+        android:name="com.example.score.ui.views.StandingsFragment"
+        android:label="fragment_standings"
+        tools:layout="@layout/fragment_standings" />
 </navigation>

@@ -4,6 +4,7 @@ import com.example.score.data.api.ApiClient
 import com.example.score.data.api.ApiService
 import com.example.score.repository.TeamsRepository
 import com.example.score.repository.TeamsRepositoryImpl
+import com.example.score.ui.StandingsViewModel
 import com.example.score.ui.TeamsListViewModel
 import org.koin.dsl.module
 
@@ -24,4 +25,5 @@ val repositoryModule = module {
 
 val viewModelModule = module {
     single { TeamsListViewModel(get()) }
+    single { StandingsViewModel(get()) }
 }
